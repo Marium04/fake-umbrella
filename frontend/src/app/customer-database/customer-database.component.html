@@ -1,0 +1,63 @@
+
+<div class="card-container" (click)="openAddUpdateCustomerDialog()">
+  <div class="card card-medium" (click)="selection.value = 'component'" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+
+    <span>Add Customer</span>
+  </div>
+</div>
+<div class="">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 align-center">
+
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let customer"> {{customer.Name}} </td>
+  </ng-container>
+
+  <!-- Person of Contact Column -->
+  <ng-container matColumnDef="Person of Contact">
+    <th mat-header-cell *matHeaderCellDef> Person of Contact </th>
+    <td mat-cell *matCellDef="let customer"> {{customer["Person of Contact"]}} </td>
+  </ng-container>
+
+  <!-- Location Column -->
+  <ng-container matColumnDef="Location">
+    <th mat-header-cell *matHeaderCellDef> Location </th>
+    <td mat-cell *matCellDef="let customer"> {{customer.Location}} </td>
+  </ng-container>
+
+  <!-- Telephone Number Column -->
+  <ng-container matColumnDef="Telephone Number">
+    <th mat-header-cell *matHeaderCellDef> Telephone Number </th>
+    <td mat-cell *matCellDef="let customer"> {{customer["Telephone Number"]}} </td>
+  </ng-container>
+
+  <!-- Number of Employees Column -->
+  <ng-container matColumnDef="Number of Employees">
+    <th mat-header-cell *matHeaderCellDef> Number of Employees </th>
+    <td mat-cell *matCellDef="let customer"> {{customer["Number of Employees"]}} </td>
+  </ng-container>
+
+  <!-- Edit Column -->
+  <ng-container matColumnDef="Edit" >
+    <th mat-header-cell *matHeaderCellDef>Edit</th>
+    <td mat-cell *matCellDef="let customer">
+      <mat-icon (click)="openAddUpdateCustomerDialog(customer)">edit</mat-icon>
+    </td>
+  </ng-container>
+
+  <!-- Delete Column -->
+  <ng-container matColumnDef="Delete">
+    <th mat-header-cell *matHeaderCellDef>Delete</th>
+    <td mat-cell *matCellDef="let customer">
+      <mat-icon (click)="openDeleteCustomerDialog(customer)">delete</mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [length]="resultsLength" [pageSize]="10" class="align-center"></mat-paginator>
+</div>

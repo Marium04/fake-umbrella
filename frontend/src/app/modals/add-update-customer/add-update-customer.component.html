@@ -1,0 +1,47 @@
+<h1>{{editMode ? 'Update' : 'Add' }} Customer</h1>
+<div class="container" *ngIf="!post; else forminfo" novalidate> 
+    <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)" class="form">
+  
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Name" formControlName="name">
+        <mat-error *ngIf="!name.valid && name.touched">
+          {{ titleAlert }}
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Person of Contact" value="{{data['Person of Contact']}}" formControlName="person_of_contact">
+        <mat-error *ngIf="!person_of_contact.valid && person_of_contact.touched">
+          {{ titleAlert }}
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Telephone Number" value="{{data['Telephone Number']}}" formControlName="telephone_number">
+        <mat-hint>Expecting format 1-XXX-XXX-XXXX</mat-hint>
+        <mat-error *ngIf="!telephone_number.valid && telephone_number.touched">
+          Required field, expecting format 1-XXX-XXX-XXXX
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Country" value="{{data['Location']}}" formControlName="location">
+        <mat-error *ngIf="!location.valid && location.touched">
+          {{ titleAlert }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <input matInput placeholder="Number of Employees" value="{{data['Number of Employees']}}"formControlName="no_of_employees">
+        <mat-error *ngIf="!no_of_employees.valid && no_of_employees.touched">
+          {{ titleAlert }}
+        </mat-error>
+      </mat-form-field>
+  
+  
+      <div class="form-element">
+        <button mat-raised-button color="primary" type="submit" class="button" [disabled]="!formGroup.valid">Submit Form</button>
+      </div>
+  
+    </form>
+  </div>
