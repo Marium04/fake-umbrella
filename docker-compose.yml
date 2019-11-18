@@ -8,8 +8,9 @@ services:
   ports:
    - "27017:27017"
  dbseed:
-  build: dbseed
-  depends_on:
+  container_name: dbseed
+  build: ./dbseed
+  links: 
     - database
  angular:
   container_name: frontend

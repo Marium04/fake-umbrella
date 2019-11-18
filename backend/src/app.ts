@@ -25,7 +25,7 @@ app.use((req, res, next) => {
     }
     next();
 });
-const dbUrl = "mongodb://localhost:27017";
+const dbUrl = "mongodb://database:27017";
 const weatherAPI = "http://api.openweathermap.org/data/2.5/forecast?lat=";
 const weatherAPI2 = "&APPID=e31c978cccc3b5e1056633fb5fdbdf47";
 // Database Name
@@ -38,6 +38,9 @@ const client = new mongodb.MongoClient(dbUrl, { useUnifiedTopology: true, useNew
 app.use(bodyParser.json());
 // Use connect method to connect to the Server
 client.connect((connErr: Error) => {
+    if (connErr) {
+        throw connErr;
+    }
     // tslint:disable-next-line:no-console
     console.log("Connected successfully to mongodb");
 
