@@ -5,8 +5,7 @@ Once the docker containers are up, navigate to localhost:4200
 
 # Pre-Requisties:
 
-Download Docker
-Docker Docker-Compose
+Download Docker and Docker-Compose
 
 
 # Note:
